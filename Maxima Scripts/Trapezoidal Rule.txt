@@ -1,0 +1,13 @@
+(%i1) /* Trapezoid Rule */
+f: 1/x $                    		    // THE FUNCTION GOES HERE.
+(%i2) a: 1 $		   		   // VALUE OF BOTTOM INTEGRAL
+(%i3) b: 2 $		        	  // VALUE OF TOP INTEGRAL
+(%i4) N: 8 $		    	    	 // NUMBER OF SUB-INTERVALS
+(%i5) h: float( b - a ) / N$
+(%i6) sum: ( ev( f, numer, x=a ) + ev( f, numer, x=b ) ) / 2.0$
+(%i7) t: float ( a )$
+(%i8) for i: 1 thru N-1 do
+( t: t + h,
+sum: sum + ev( f, numer, x = t)
+)$
+(%i9) print ("Trapezoid rule approximation is ", h * sum )$
