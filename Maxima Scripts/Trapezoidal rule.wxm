@@ -1,0 +1,22 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 22.04.0 ] */
+/* [wxMaxima: input   start ] */
+/* Trapezoid Rule */
+f: 1/x $                    /* THE FUNCTION GOES HERE. */
+a: 1 $                      /* VALUE OF BOTTOM INTEGRAL */
+b: 2 $                      /* VALUE OF TOP INTEGRAL */
+N: 8 $                      /* NUMBER OF SUB-INTERVALS */
+h: float( b - a ) / N$
+sum: ( ev( f, numer, x=a ) + ev( f, numer, x=b ) ) / 2.0$
+t: float ( a )$
+for i: 1 thru N-1 do (
+    t: t + h,
+    sum: sum + ev( f, numer, x = t)
+)$
+print ("Trapezoid rule approximation is ", h * sum )$
+/* [wxMaxima: input   end   ] */
+
+
+
+/* Old versions of Maxima abort on loading files that end in a comment. */
+"Created with wxMaxima 22.04.0"$
